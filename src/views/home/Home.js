@@ -28,6 +28,7 @@ import {
 import CustomModal from './CustomModal/CustomModal'
 import ActionNav from "./ActionNav/ActionNav";
 import AddSection from "./AddSection/AddSection";
+import TaskList from "./TaskList/TaskList";
 
 
 
@@ -54,11 +55,7 @@ class Home extends React.Component {
   
   }
 
-//   setBgChartData = name => {
-//     this.setState({
-//       bigChartData: name
-//     });
-//   };
+
   render() {
     
     return (
@@ -95,6 +92,8 @@ class Home extends React.Component {
                 </Col>
 
             </Row>
+
+            <TaskList/>
 
             <AddSection 
             taskInputBox={this.taskInputBox}
