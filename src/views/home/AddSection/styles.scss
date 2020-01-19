@@ -1,0 +1,23 @@
+#add-section{
+    .add-task-date-time[class]{
+        // background: red;
+        outline: 0;
+        border-radius: 0px;
+        // border:1px solid black;
+        color:#fff;
+
+        .form-control{
+            border-radius: 0;
+            border-right: 1px solid #4888;
+
+        }
+        .rdtPicker{
+            right: 0;
+        }
+
+    }
+
+    .form-control{
+        border-radius: 0;
+    }
+}

@@ -43,7 +43,17 @@ import Login from "views/pages/Login.jsx";
 import Rtl from "views/pages/Rtl.jsx";
 import Lock from "views/pages/Lock.jsx";
 
+import Home from "views/home/Home";
+
 const routes = [
+  {
+    path: "/home",
+    name: "Index",
+    rtlName: "لوحة القيادة",
+    icon: "tim-icons icon-chart-pie-36",
+    component: Home,
+    layout: "/custom"
+  },
   {
     path: "/dashboard",
     name: "Dashboard",

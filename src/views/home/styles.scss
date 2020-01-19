@@ -1,0 +1,36 @@
+#home{
+    
+    .background{
+        background: white;
+    }
+    
+
+    .dot{
+        font-size: 12px;
+    }
+    .dot:hover{
+        cursor: pointer;
+        
+    }
+
+    .comment:hover{
+        cursor: pointer;
+    }
+
+    .comment_input_box{
+        
+        width: 95%;
+        outline: none;
+        border:0;
+    }
+
+    .icon-simple-add[class]:hover{
+        cursor: pointer;
+        background: black;
+        border-radius: 5px;
+    }
+
+    .add-task[class]:hover{
+        cursor: pointer;
+    }
+}

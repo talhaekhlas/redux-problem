@@ -12,7 +12,7 @@ const initialState = {
 
 }
 
-export const indexReducer = (state = initialState, action) => {
+const indexReducer = (state = initialState, action) => {
     switch (action.type) {
 
         case INDEX_TASK_LIST:
