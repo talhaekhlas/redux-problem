@@ -1,26 +1,45 @@
-import React, { Component, Fragment } from 'react';
-
+import React, { Component } from 'react';
 import {Row,Col} from "reactstrap";
+
+import './styles.scss'
 
 import SubtaskCommentActivity from './SubtaskCommentActivity/SubtaskCommentActivity'
 import SubtaskCommentActivity2 from './SubtaskCommentActivity/SubtaskCommentActivity2'
 import DateSetup from './DateSetup/DateSetup'
 import TaskAction from './TaskAction/TaskAction'
 
-import './styles.scss'
+class SingleTask extends Component {
 
-class TaskList extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+          bigChartData: "data1",
+          task_input_box:false,
+          task_list_action:false
+        };
+      }
+
+    showSingleTask = ()=>{
+        this.setState({
+          task_list_action:true
+        });
+      }
+    
+      hideSingleTask = ()=>{
+        this.setState({
+          task_list_action:false
+        });
+    }
+
+
     render() {
         return (
-            <div id="task-list">
-                <Row 
+            <div id='single-task'>
+                 <Row 
                  style={{background:'white'}}
                  className="hide-show"
-                //  onMouseOver = {this.props.showTaskListAction}
-                 onMouseEnter = {this.props.showTaskListAction}
-                //  onMouseUp = {this.props.showTaskListAction}
-                //  onMouseOut = {this.props.hideTaskListAction}
-                 onMouseLeave = {this.props.hideTaskListAction}
+                 onMouseEnter = {this.showSingleTask}
+                 onMouseLeave = {this.hideSingleTask}
                  
                  >
                     
@@ -43,12 +62,12 @@ class TaskList extends Component {
                         sm={{ size: 5 }}
                         xs={{ size: 5 }}
                     >
-                        {this.props.task_list_action &&
+                        {this.state.task_list_action &&
                         <div>
-                        <SubtaskCommentActivity/>
-                        <DateSetup/>
-                        <SubtaskCommentActivity2/>
-                        <TaskAction/>
+                            <SubtaskCommentActivity/>
+                            <DateSetup/>
+                            <SubtaskCommentActivity2/>
+                            <TaskAction/>
                         </div>
                         }
                     
@@ -66,4 +85,4 @@ class TaskList extends Component {
     }
 }
 
-export default TaskList;
+export default SingleTask;

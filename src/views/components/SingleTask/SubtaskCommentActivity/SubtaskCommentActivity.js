@@ -13,7 +13,9 @@ const SubtaskCommentActivity = (props) => {
 
   const toggleTask = () => {
     //   alert(120)
+    
     setModal(!modal);
+
   }
 
   return (
@@ -25,8 +27,13 @@ const SubtaskCommentActivity = (props) => {
           >
           <i className="tim-icons icon-alert-circle-exc" onClick={toggleTask}></i>
       </span>
-      <Modal isOpen={modal} modalTransition={{ timeout: 700 }} backdropTransition={{ timeout: 1300 }}
-        toggle={toggleTask} className={className}>
+      <Modal 
+        isOpen={modal} 
+        modalTransition={{ timeout: 700 }} 
+        backdropTransition={{ timeout: 1300 }}
+        toggle={toggleTask} className={className}
+        size='lg'
+        >
         <ModalHeader toggle={toggleTask}>Modal title</ModalHeader>
         <ModalBody>
             <TabSubtaskCommAct/>

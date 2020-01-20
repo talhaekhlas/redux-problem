@@ -29,6 +29,7 @@ import CustomModal from './CustomModal/CustomModal'
 import ActionNav from "./ActionNav/ActionNav";
 import AddSection from "./AddSection/AddSection";
 import TaskList from "./TaskList/TaskList";
+import SingleTask from "../components/SingleTask/SingleTask";
 
 
 
@@ -106,11 +107,14 @@ class Home extends React.Component {
 
             </Row>
 
-            <TaskList
+            <SingleTask/>
+
+            {/* <TaskList
               showTaskListAction = {this.showTaskListAction}
               hideTaskListAction = {this.hideTaskListAction}
               task_list_action = {this.state.task_list_action}
             />
+             */}
 
             <AddSection 
             taskInputBox={this.taskInputBox}
