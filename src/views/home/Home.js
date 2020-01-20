@@ -37,7 +37,8 @@ class Home extends React.Component {
     super(props);
     this.state = {
       bigChartData: "data1",
-      task_input_box:false
+      task_input_box:false,
+      task_list_action:false
     };
   }
 
@@ -53,6 +54,18 @@ class Home extends React.Component {
         task_input_box:false
     });
   
+  }
+
+  showTaskListAction = ()=>{
+    this.setState({
+      task_list_action:true
+    });
+  }
+
+  hideTaskListAction = ()=>{
+    this.setState({
+      task_list_action:false
+    });
   }
 
 
@@ -93,12 +106,17 @@ class Home extends React.Component {
 
             </Row>
 
-            <TaskList/>
+            <TaskList
+              showTaskListAction = {this.showTaskListAction}
+              hideTaskListAction = {this.hideTaskListAction}
+              task_list_action = {this.state.task_list_action}
+            />
 
             <AddSection 
             taskInputBox={this.taskInputBox}
             taskInputBoxCancel={this.taskInputBoxCancel}
             taskInputBoxStatus = {this.state.task_input_box}
+
             />
           
         </div>

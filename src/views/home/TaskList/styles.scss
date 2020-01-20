@@ -20,4 +20,13 @@
         
         
     }
+
+    .hide-show{
+        // background: black;
+        height: 25px;
+    }
+    .hide-show:hover{
+        cursor: pointer;
+        background: red;
+    }
 }
