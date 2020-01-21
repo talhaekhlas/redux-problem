@@ -81,6 +81,7 @@ class Home extends React.Component {
 
 
   render() {
+    // localStorage.removeItem('token')
     const indexTaskListMessage = this.props.index_task.index_task_list.message
     console.log(indexTaskListMessage)
     return (

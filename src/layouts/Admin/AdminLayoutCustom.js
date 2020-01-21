@@ -26,6 +26,7 @@ import AdminNavbar from "components/Navbars/AdminNavbar.jsx";
 import Footer from "components/Footer/Footer.jsx";
 import Sidebar from "components/Sidebar/Sidebar.jsx";
 import FixedPlugin from "components/FixedPlugin/FixedPlugin.jsx";
+import PrivateRoute from '../../components/PrivateRoute/PrivateRoute'
 
 import routes from "routes.js";
 
@@ -98,7 +99,12 @@ class AdminLayoutCustom extends React.Component {
       }
       if (prop.layout === "/custom") {
         return (
-          <Route
+          // <Route
+          //   path={prop.layout + prop.path}
+          //   component={prop.component}
+          //   key={key}
+          // />
+          <PrivateRoute
             path={prop.layout + prop.path}
             component={prop.component}
             key={key}
@@ -166,6 +172,7 @@ class AdminLayoutCustom extends React.Component {
   };
   render() {
     document.body.classList.add("white-content");
+    
     return (
       <div className="wrapper">
         <div className="rna-container">

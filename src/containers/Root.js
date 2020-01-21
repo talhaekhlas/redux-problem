@@ -8,6 +8,7 @@ import { createBrowserHistory } from "history";
 import {Router,Route, Switch, Redirect } from "react-router-dom";
 
 import AuthLayout from "layouts/Auth/Auth.jsx";
+import AuthLayoutCustom from "layouts/Auth/AuthLayoutCustom";
 import AdminLayout from "layouts/Admin/Admin.jsx";
 import RTLLayout from "layouts/RTL/RTL.jsx";
 
@@ -32,11 +33,12 @@ export default class Root extends Component {
         <Switch>
 
           {/* <Route path="/home" render={props => <Home {...props} />} /> */}
-          <Route path="/auth" render={props => <AuthLayout {...props} />} />
+          <Route path="/auth" render={props => <AuthLayoutCustom {...props} />} />
           <Route path="/admin" render={props => <AdminLayout {...props} />} />
-          <Route path="/rtl" render={props => <RTLLayout {...props} />} />
+          {/* <Route path="/rtl" render={props => <RTLLayout {...props} />} /> */}
           <Route path="/custom" render={props => <AdminLayoutCustom {...props} />} />
-          <Redirect from="/" to="/custom/home" />
+          {/* <Redirect from="/" to="/custom/home" /> */}
+          <Redirect from="/" to="/auth/login" />
          </Switch>
            
         </Router>
