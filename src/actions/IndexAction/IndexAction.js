@@ -3,11 +3,11 @@ export const INDEX_TASK_LIST = 'INDEX_TASK_LIST'
 
 
 
-export const todoList = () => async(dispatch, getState) => {
+export const indexTaskList = () => async(dispatch, getState) => {
 
    
       const data = {
-          message:'after dispatch Index task list',
+          message:'after dispatch',
           data:[
               {'name':'List One','id':1,'project_id':1},
               {'name':'List Two','id':2,'project_id':1},

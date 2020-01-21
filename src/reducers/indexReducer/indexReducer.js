@@ -4,7 +4,7 @@ import { INDEX_TASK_LIST } from '../../actions/IndexAction/IndexAction'
 
 const initialState = {
     index_task_list: {
-        message:"Initial Index task list",
+        message:"Before dispatch",
         data:[]
     },
     

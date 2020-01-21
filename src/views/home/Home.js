@@ -31,6 +31,10 @@ import AddSection from "./AddSection/AddSection";
 import TaskList from "./TaskList/TaskList";
 import SingleTask from "../components/SingleTask/SingleTask";
 
+import {indexTaskList} from '../../actions/IndexAction/IndexAction'
+import {withRouter } from "react-router-dom";
+import { connect } from 'react-redux'
+
 
 
 class Home extends React.Component {
@@ -69,12 +73,22 @@ class Home extends React.Component {
     });
   }
 
+  reduxCheck = ()=>{
+    const {dispatch } = this.props;  
+    dispatch(indexTaskList());
+    console.log('redux check')
+  }
+
 
   render() {
-    
+    const indexTaskListMessage = this.props.index_task.index_task_list.message
+    console.log(indexTaskListMessage)
     return (
       <>
+      
         <div className="content" id="home">
+            {indexTaskListMessage}
+            <span onClick={()=>this.reduxCheck()}>Hamba</span>
             <Row className="background" style={{padding:'5px'}}>
                 <Col  
                 lg={{ size: 1 }}
@@ -129,4 +143,13 @@ class Home extends React.Component {
   }
 }
 
-export default Home;
+const mapStateToProps = state => ({
+  
+  index_task:state.indexReducer,
+  
+}) 
+
+
+export default withRouter(connect(mapStateToProps)(Home))
+
+// export default Home;
