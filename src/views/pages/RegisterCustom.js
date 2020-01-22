@@ -55,8 +55,6 @@ class Register extends React.Component {
       
       localStorage.setItem('token',document.querySelector('#name').value)
 
-      console.log('test local storage',localStorage.getItem('token'))
-
       const {dispatch } = this.props;  
       dispatch(indexTaskList());
   }
@@ -66,7 +64,7 @@ class Register extends React.Component {
       
     let { from } = this.props.location.state || { from: { pathname: "/custom/home" } };
 
-    console.log('test local storage from render',checkLocalStorage)
+    // console.log('test local storage from render',checkLocalStorage)
     
     if (checkLocalStorage) return <Redirect to={from} />; 
 

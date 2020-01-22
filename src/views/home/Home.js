@@ -76,19 +76,21 @@ class Home extends React.Component {
   reduxCheck = ()=>{
     const {dispatch } = this.props;  
     dispatch(indexTaskList());
-    console.log('redux check')
+    
   }
 
 
   render() {
     // localStorage.removeItem('token')
+
+    console.log('localstorage',localStorage.getItem('token'))
     const indexTaskListMessage = this.props.index_task.index_task_list.message
-    console.log(indexTaskListMessage)
+    
     return (
       <>
       
         <div className="content" id="home">
-            {indexTaskListMessage}
+            {indexTaskListMessage,localStorage.getItem('token')}
             <span onClick={()=>this.reduxCheck()}>Hamba</span>
             <Row className="background" style={{padding:'5px'}}>
                 <Col  

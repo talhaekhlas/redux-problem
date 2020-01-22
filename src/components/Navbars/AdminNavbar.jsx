@@ -36,6 +36,15 @@ import {
   Modal,
   UncontrolledTooltip
 } from "reactstrap";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  Redirect,
+  useHistory,
+  useLocation
+} from "react-router-dom";
 
 class AdminNavbar extends React.Component {
   constructor(props) {
@@ -85,6 +94,18 @@ class AdminNavbar extends React.Component {
       modalSearch: !this.state.modalSearch
     });
   };
+
+  logout = ()=>{
+    localStorage.removeItem('token')
+    // let history = useHistory();
+    // history.push("/auth/login")
+
+    window.location.href='/auth/login'
+    
+
+
+    console.log('logout')
+  }
   render() {
     return (
       <>
@@ -212,7 +233,7 @@ class AdminNavbar extends React.Component {
                       <img alt="..." src={require("assets/img/mike.jpg")} />
                     </div>
                     <b className="caret d-none d-lg-block d-xl-block" />
-                    <p className="d-lg-none">Log out</p>
+                    <p className="d-lg-none" >Log out</p>
                   </DropdownToggle>
                   <DropdownMenu className="dropdown-navbar" right tag="ul">
                     <NavLink tag="li">
@@ -223,7 +244,7 @@ class AdminNavbar extends React.Component {
                     </NavLink>
                     <DropdownItem divider tag="li" />
                     <NavLink tag="li">
-                      <DropdownItem className="nav-item">Log out</DropdownItem>
+                      <DropdownItem className="nav-item" onClick={this.logout}>Log out</DropdownItem>
                     </NavLink>
                   </DropdownMenu>
                 </UncontrolledDropdown>
