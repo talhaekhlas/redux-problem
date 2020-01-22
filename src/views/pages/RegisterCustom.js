@@ -16,6 +16,8 @@
 */
 import React from "react";
 
+
+
 // reactstrap components
 import {
   Button,
@@ -40,6 +42,7 @@ import {Link,Redirect,withRouter } from "react-router-dom";
 
 import { connect } from 'react-redux'
 import {indexTaskList} from '../../actions/IndexAction/IndexAction'
+import {registration} from '../../actions/RegistrationAction/RegistrationAction'
 
 
 class Register extends React.Component {
@@ -55,7 +58,21 @@ class Register extends React.Component {
       
       localStorage.setItem('token',document.querySelector('#name').value)
 
-      const {dispatch } = this.props;  
+      const {dispatch } = this.props; 
+
+      var name = document.querySelector('#name').value;
+      var email = document.querySelector('#email').value;
+      var password = document.querySelector('#password').value;
+      
+
+      const formData = {
+        'name':name,
+        'email':email,
+        'password':password,
+        'password_confirmation':password,
+      }
+
+      dispatch(registration(formData,this.props));
       dispatch(indexTaskList());
   }
   render() {
@@ -104,7 +121,7 @@ class Register extends React.Component {
                             <i className="tim-icons icon-email-85" />
                           </InputGroupText>
                         </InputGroupAddon>
-                        <Input placeholder="Email" type="text" />
+                        <Input placeholder="Email" id='email' type="text" />
                       </InputGroup>
 
                       <InputGroup>
@@ -113,7 +130,7 @@ class Register extends React.Component {
                             <i className="tim-icons icon-lock-circle" />
                           </InputGroupText>
                         </InputGroupAddon>
-                        <Input placeholder="Password" type="password" />
+                        <Input placeholder="Password" id='password' type="password" />
                       </InputGroup>
 
                       <InputGroup>
@@ -122,7 +139,7 @@ class Register extends React.Component {
                             <i className="tim-icons icon-lock-circle" />
                           </InputGroupText>
                         </InputGroupAddon>
-                        <Input placeholder="Confirm Password" type="password" />
+                        <Input placeholder="Confirm Password" id='confirm_password' type="password" />
                       </InputGroup>
 
                      
