@@ -132,7 +132,7 @@
     .caret {
       top: 14px;
       position: absolute;
-      right: 10px;
+      left: 10px;
     }
 
     li {
@@ -725,10 +725,52 @@
       .nav [data-toggle="collapse"] ~ div > ul > li > a .sidebar-mini-icon {
         opacity: 1;
       }
+
+      .plus-icon {
+        display: none;
+      }
     }
 
     .sidebar:hover {
       width: $sidebar-width;
+
+      .sidebar-wrapper {
+        .nav{
+          li {
+            a {
+              .icon-molecule-40{
+                opacity: 0;
+              }
+             
+            }
+            &.project {
+              position: relative;
+              
+              .plus-icon {
+                position: absolute;
+                right: 5px;
+                top: 10px;
+                cursor: pointer;
+                display: block;
+
+                i {
+                  font-size: 15px;
+                }
+              }
+
+              a {
+                p {
+                  .caret {
+                    margin-top: 0;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+      
 
       .logo {
         a.logo-normal {

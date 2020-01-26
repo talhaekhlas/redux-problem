@@ -25,6 +25,7 @@ import NotificationAlert from "react-notification-alert";
 import AdminNavbar from "components/Navbars/AdminNavbar.jsx";
 import Footer from "components/Footer/Footer.jsx";
 import Sidebar from "components/Sidebar/Sidebar.jsx";
+import SidebarCustom from "components/Sidebar/SidebarCustom.jsx";
 import FixedPlugin from "components/FixedPlugin/FixedPlugin.jsx";
 import PrivateRoute from 'components/PrivateRoute/PrivateRoute'
 
@@ -190,7 +191,7 @@ class AdminLayoutCustom extends React.Component {
             <i className="tim-icons icon-bullet-list-67 visible-on-sidebar-mini text-muted" />
           </button>
         </div>
-        <Sidebar
+        <SidebarCustom
           {...this.props}
           routes={routes}
           activeColor={this.state.activeColor}

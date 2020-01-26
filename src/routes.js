@@ -44,6 +44,8 @@ import Rtl from "views/pages/Rtl.jsx";
 import Lock from "views/pages/Lock.jsx";
 
 import Home from "views/home/Home";
+import Today from "views/today/Today";
+import SevenDay from "views/sevenday/SevenDay";
 
 const routes = [
   {
@@ -52,7 +54,117 @@ const routes = [
     rtlName: "لوحة القيادة",
     icon: "tim-icons icon-chart-pie-36",
     component: Home,
+    layout: "/custom",
+
+  },
+  {
+    path: "/today",
+    name: "Today",
+    rtlName: "لوحة القيادة",
+    icon: "tim-icons icon-calendar-60",
+    component: Today,
     layout: "/custom"
+  },
+  {
+    path: "/sevenday",
+    name: "SevenDay",
+    rtlName: "لوحة القيادة",
+    icon: "tim-icons icon-book-bookmark",
+    component: SevenDay,
+    layout: "/custom"
+  },
+  {
+    collapse: true,
+    name: "Projects",
+    rtlName: "المكونات",
+    icon: "tim-icons icon-molecule-40",
+    mini: "Pro",
+    state: "componentsCollapse",
+    customClass: '',
+    views: [
+      {
+        collapse: true,
+        name: "Multi Level Collapse",
+        rtlName: "انهيار متعدد المستويات",
+        mini: "MLT",
+        rtlMini: "ر",
+        state: "multiCollapse",
+        views: [
+          {
+            path: "/buttons",
+            name: "Buttons",
+            rtlName: "وصفت",
+            mini: "B",
+            rtlMini: "ب",
+            component: Buttons,
+            layout: "/admin"
+          }
+        ]
+      },
+      {
+        path: "/buttons",
+        name: "Buttons",
+        rtlName: "وصفت",
+        mini: "B",
+        rtlMini: "ب",
+        component: Buttons,
+        layout: "/admin"
+      },
+      {
+        path: "/grid-system",
+        name: "Grid System",
+        rtlName: "نظام الشبكة",
+        mini: "GS",
+        rtlMini: "زو",
+        component: Grid,
+        layout: "/admin"
+      },
+      {
+        path: "/panels",
+        name: "Panels",
+        rtlName: "لوحات",
+        mini: "P",
+        rtlMini: "ع",
+        component: Panels,
+        layout: "/admin"
+      },
+      {
+        path: "/sweet-alert",
+        name: "Sweet Alert",
+        rtlName: "الحلو تنبيه",
+        mini: "SA",
+        rtlMini: "ومن",
+        component: SweetAlert,
+        layout: "/admin"
+      },
+      {
+        path: "/notifications",
+        name: "Notifications",
+        rtlName: "إخطارات",
+        mini: "N",
+        rtlMini: "ن",
+        component: Notifications,
+        layout: "/admin"
+      },
+      {
+        path: "/icons",
+        name: "Icons",
+        rtlName: "الرموز",
+        mini: "I",
+        rtlMini: "و",
+        component: Icons,
+        layout: "/admin"
+      },
+      {
+        path: "/typography",
+        name: "Typography",
+        rtlName: "طباعة",
+        mini: "T",
+        rtlMini: "ر",
+        component: Typography,
+        layout: "/admin"
+      }
+    ]
   },
   {
     path: "/dashboard",
