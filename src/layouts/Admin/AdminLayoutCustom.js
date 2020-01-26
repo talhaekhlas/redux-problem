@@ -173,6 +173,8 @@ class AdminLayoutCustom extends React.Component {
   };
   render() {
     document.body.classList.add("white-content");
+
+    console.log('local storage data',localStorage.getItem('token'))
     
     return (
       <div className="wrapper">

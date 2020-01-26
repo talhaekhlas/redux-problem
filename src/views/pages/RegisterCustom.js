@@ -56,7 +56,7 @@ class Register extends React.Component {
   registerSubmit = (e)=>{
       e.preventDefault()
       
-      localStorage.setItem('token',document.querySelector('#name').value)
+      
 
       const {dispatch } = this.props; 
 
@@ -73,6 +73,7 @@ class Register extends React.Component {
       }
 
       dispatch(registration(formData,this.props));
+      // localStorage.setItem('token',document.querySelector('#name').value)
       dispatch(indexTaskList());
   }
   render() {
@@ -174,8 +175,5 @@ const mapStateToProps = state => ({
   index_task:state.indexReducer,
   
 })
-
-
-
 
 export default withRouter(connect(mapStateToProps)(Register))

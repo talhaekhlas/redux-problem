@@ -6,23 +6,12 @@ export const DUPLICATE_CHECK = 'DUPLICATE_CHECK'
 
 export const registration = (formData,props) => (dispatch, getState) => {
 
-    console.log(formData)
-
-    var formData1 = {
-        "name":"Ekhlas1",
-        "email":"ekhlas11@gmail.com",
-        "password":"12345678",
-        "password_confirmation":"12345678"
-        
-        
-    }
-
-    console.log('from submit',formData)
-    console.log('from static',formData1)
-
+    
     
     axios.post('http://localhost:8000/api/auth/signup',formData).then(response => response.data)
     .then((data) => {
+
+      // localStorage.setItem('token','test')
 
       console.log('user after submit userRegistrationAction',data);
         
@@ -37,6 +26,8 @@ export const registration = (formData,props) => (dispatch, getState) => {
      })
 
     //  props.history.push('/login')
+
+     localStorage.setItem('token','test test test')
      props.history.push('/custom/home')
 
      console.log('userRegistrationAction',props);

@@ -16,7 +16,8 @@
 */
 /*eslint-disable*/
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink,Link,Redirect,withRouter } from "react-router-dom";
+import { connect } from 'react-redux'
 import PropTypes from "prop-types";
 // javascript plugin used to create scrollbars on windows
 import PerfectScrollbar from "perfect-scrollbar";
@@ -72,6 +73,21 @@ class SidebarCustom extends React.Component {
       projectModalOpenStatus:false
     })
   }
+
+
+  saveProject = () =>{
+
+    console.log('project name',document.querySelector('#project_name').value)
+    console.log('project color',document.querySelector('#project_color').children[1].value)
+    console.log('favorite color',document.querySelector('#project_description').value)
+    this.setState({
+      ...this.state,
+      projectModalStatus:false,
+      projectModalOpenStatus:false
+    })
+  }
+
+
   // this verifies if any of the collapses should be default opened on a rerender of this component
   // for example, on the refresh of the page,
   // while on the src/views/forms/RegularForms.jsx - route /admin/regular-forms
@@ -147,6 +163,7 @@ class SidebarCustom extends React.Component {
               {this.state.projectModalStatus?
               <ProjectModal 
               projectModalClose ={this.projectModalClose}
+              saveProject ={this.saveProject}
               projectModalOpenStatus = {this.state.projectModalOpenStatus}
               />:null}
               </>
@@ -296,4 +313,10 @@ SidebarCustom.propTypes = {
   closeSidebar: PropTypes.func
 };
 
-export default SidebarCustom;
+
+const mapStateToProps = state => ({
+  project:state.projectReducer,
+  
+})
+
+export default withRouter(connect(mapStateToProps)(SidebarCustom))
