@@ -1,17 +1,9 @@
-import React, { useState,Component } from 'react';
+import React, { Component } from 'react';
 import { Modal, ModalHeader, ModalBody, ModalFooter,
     Button,
-    Card,
-    CardHeader,
-    CardBody,
-    CardFooter,
-    CardTitle,
-    Label,
     FormGroup,
     Form,
     Input,
-    Row,
-    Col
  } from 'reactstrap';
  import Select from "react-select";
  import Switch from "react-bootstrap-switch";

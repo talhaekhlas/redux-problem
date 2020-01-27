@@ -21,14 +21,14 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
           checkLocalStorage ? (
             <Component {...props} />
           ) : (
-            // <Redirect
-            //   to={{
-            //     pathname: "auth/login",
-            //     state: { from: props.location }
-            //   }}
-            // />
+            <Redirect
+              to={{
+                pathname: "/auth/login",
+                state: { from: props.location }
+              }}
+            />
 
-            window.location.href = 'http://localhost:3000/auth/login'
+            // window.location.href = 'http://localhost:3000/auth/login'
 
       
           )

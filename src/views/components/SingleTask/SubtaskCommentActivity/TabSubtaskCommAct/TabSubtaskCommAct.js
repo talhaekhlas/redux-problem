@@ -4,11 +4,8 @@ import React from "react";
 // reactstrap components
 import {
   Card,
-  CardHeader,
   CardBody,
-  CardTitle,
   Button,
-  Collapse,
   NavItem,
   NavLink,
   Nav,

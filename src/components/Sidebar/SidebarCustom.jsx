@@ -1,16 +1,14 @@
 
 import React from "react";
-import { NavLink,Link,Redirect,withRouter } from "react-router-dom";
+import { NavLink,withRouter } from "react-router-dom";
 import { connect } from 'react-redux'
 import PropTypes from "prop-types";
-// javascript plugin used to create scrollbars on windows
 import PerfectScrollbar from "perfect-scrollbar";
 
 import ProjectModal from '../Project/ProjectModal/ProjectModal'
-
-// reactstrap components
 import { Nav, Collapse } from "reactstrap";
 import { projectModalShow } from "../../actions/ProjectAction/ProjectAction";
+import Project from "../Project/Project";
 
 
 var ps;
@@ -103,7 +101,7 @@ class SidebarCustom extends React.Component {
         return (
           <li
             className={this.getCollapseInitialState(prop.views) ? "active" : "" +
-             prop.name == 'Projects' ? 'project' : null }
+             prop.name === 'Projects' ? 'project' : null }
             key={key}
           >
             
@@ -145,7 +143,7 @@ class SidebarCustom extends React.Component {
               <i className="tim-icons icon-simple-add"></i></span>
               :null} */}
            
-            {prop.name=='Projects'?
+            {prop.name==='Projects'?
             <>
               <span className="plus-icon" onClick={this.addProjectFrom}>
               <i className="tim-icons icon-simple-add"></i></span>
@@ -215,7 +213,7 @@ class SidebarCustom extends React.Component {
 
 
   render() {
-    console.log(this.props.routes)
+    
     const { activeColor, logo } = this.props;
     let logoImg = null;
     let logoText = null;
@@ -266,6 +264,19 @@ class SidebarCustom extends React.Component {
         );
       }
     }
+
+    var customRoute = this.props.routes
+
+    customRoute[3] = {
+      path: "/project",
+      name: "Hamba",
+      rtlName: "لوحة القيادة",
+      icon: "tim-icons icon-book-bookmark",
+      component: Project,
+      layout: "/custom"
+    }
+
+
     return (
       <div className="sidebar" data={activeColor}>
         <div className="sidebar-wrapper" ref="sidebar">

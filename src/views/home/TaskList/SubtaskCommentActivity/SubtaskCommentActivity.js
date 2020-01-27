@@ -1,5 +1,5 @@
-import React, { useState, Fragment } from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import React, { useState } from 'react';
+import { Modal, ModalHeader, ModalBody } from 'reactstrap';
 import './styles.scss'
 import TabSubtaskCommAct from './TabSubtaskCommAct/TabSubtaskCommAct';
 

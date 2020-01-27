@@ -1,37 +1,17 @@
-/*!
 
-=========================================================
-* Black Dashboard PRO React - v1.0.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/black-dashboard-pro-react
-* Copyright 2019 Creative Tim (https://www.creative-tim.com)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
 import React from "react";
-import { Route, Switch } from "react-router-dom";
-// javascript plugin used to create scrollbars on windows
+import { Switch } from "react-router-dom";
 import PerfectScrollbar from "perfect-scrollbar";
-// react plugin for creating notifications over the dashboard
 import NotificationAlert from "react-notification-alert";
-
-// core components
 import AdminNavbar from "components/Navbars/AdminNavbar.jsx";
 import Footer from "components/Footer/Footer.jsx";
-import Sidebar from "components/Sidebar/Sidebar.jsx";
 import SidebarCustom from "components/Sidebar/SidebarCustom.jsx";
-import FixedPlugin from "components/FixedPlugin/FixedPlugin.jsx";
 import PrivateRoute from 'components/PrivateRoute/PrivateRoute'
 
 import routes from "routes.js";
 
 import logo from "assets/img/react-logo.png";
+import Project from "components/Project/Project";
 
 var ps;
 
@@ -174,7 +154,20 @@ class AdminLayoutCustom extends React.Component {
   render() {
     document.body.classList.add("white-content");
 
-    console.log('local storage data',localStorage.getItem('token'))
+
+
+    var customRoute = routes
+
+    customRoute[3] = {
+      path: "/project",
+      name: "Hamba",
+      rtlName: "لوحة القيادة",
+      icon: "tim-icons icon-book-bookmark",
+      component: Project,
+      layout: "/custom"
+    }
+
+    
     
     return (
       <div className="wrapper">
@@ -217,18 +210,13 @@ class AdminLayoutCustom extends React.Component {
             toggleSidebar={this.toggleSidebar}
           />
           <Switch>{this.getRoutes(routes)}</Switch>
-          {// we don't want the Footer to be rendered on full screen maps page
+          {
           this.props.location.pathname.indexOf("full-screen-map") !==
           -1 ? null : (
             <Footer fluid />
           )}
         </div>
-        {/* <FixedPlugin
-          activeColor={this.state.activeColor}
-          sidebarMini={this.state.sidebarMini}
-          handleActiveClick={this.handleActiveClick}
-          handleMiniClick={this.handleMiniClick}
-        /> */}
+       
       </div>
     );
   }

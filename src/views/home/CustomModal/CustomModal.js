@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { Button, Modal, ModalHeader, ModalBody, Tooltip } from 'reactstrap';
+import { Modal, ModalHeader, ModalBody, Tooltip } from 'reactstrap';
 import TabPaneCustom from './TabPaneCustom'
 
 const CustomModal = (props) => {
   const {
-    buttonLabel,
+    
     className
   } = props;
 

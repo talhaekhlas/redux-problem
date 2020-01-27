@@ -26,6 +26,8 @@ const projectReducer = (state = initialState, action) => {
             return Object.assign( {}, state, {
                 project_modal_show: action.payload
             }) 
+
+        default:
     }
 
     return state

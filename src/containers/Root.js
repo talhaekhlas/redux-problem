@@ -7,10 +7,8 @@ import configureStore from '../configureStore'
 import { createBrowserHistory } from "history";
 import {Router,Route, Switch, Redirect } from "react-router-dom";
 
-import AuthLayout from "layouts/Auth/Auth.jsx";
 import AuthLayoutCustom from "layouts/Auth/AuthLayoutCustom";
 import AdminLayout from "layouts/Admin/Admin.jsx";
-import RTLLayout from "layouts/RTL/RTL.jsx";
 
 import AdminLayoutCustom from "layouts/Admin/AdminLayoutCustom";
 

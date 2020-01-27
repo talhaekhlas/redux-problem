@@ -36,15 +36,7 @@ import {
   Modal,
   UncontrolledTooltip
 } from "reactstrap";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  Redirect,
-  useHistory,
-  useLocation
-} from "react-router-dom";
+
 
 class AdminNavbar extends React.Component {
   constructor(props) {

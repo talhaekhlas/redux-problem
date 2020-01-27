@@ -1,14 +1,13 @@
-import React from 'react';
+
 import axios from 'axios'
 export const LOGIN = 'LOGIN'
 // export const LOGIN_CHECK = 'LOGIN_CHECK'
 // export const DUPLICATE_CHECK = 'DUPLICATE_CHECK'
 
-export const login = (formData,props) => (dispatch, getState) => {
+export const login = (formData,props) => async(dispatch, getState) => {
 
-    
-    console.log('form data',formData)
-    axios.post('http://localhost:8000/api/auth/login',formData).then(response => response.data)
+   
+    await axios.post('http://localhost:8000/api/auth/login',formData).then(response => response.data)
     .then((data) => {
 
       // localStorage.setItem('token','test')
@@ -22,12 +21,17 @@ export const login = (formData,props) => (dispatch, getState) => {
           login_info: data,
         }
       })
+
+      localStorage.setItem('token',data.access_token)
+      props.history.push('/custom/home')
+
+      
       
      })
 
     //  props.history.push('/login')
 
-     localStorage.setItem('token','access_token')
+     
     //  props.history.push('/custom/home')
 
      

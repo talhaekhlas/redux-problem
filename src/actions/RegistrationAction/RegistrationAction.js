@@ -1,4 +1,4 @@
-import React from 'react';
+
 import axios from 'axios'
 export const REGISTRATION = 'REGISTRATION'
 export const LOGIN_CHECK = 'LOGIN_CHECK'

@@ -30,6 +30,8 @@ export const registrationReducer = (state = initialState, action) => {
                 user_info: action.payload
             })
 
+        default:
+
         // case LOGIN_CHECK:
         //     return Object.assign( {}, state, {
         //         login_check: action.payload.login_check

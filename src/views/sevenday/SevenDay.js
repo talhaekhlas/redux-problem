@@ -1,35 +1,7 @@
 
 import React from "react";
-// nodejs library that concatenates classes
-import classNames from "classnames";
-// react plugin used to create charts
-import { Line, Bar } from "react-chartjs-2";
-// react plugin for creating vector maps
-import { VectorMap } from "react-jvectormap";
+
 import './styles.scss'
-// import './AddSection/AddSection'
-
-// reactstrap components
-import {
-  CardTitle,
-  Row,
-  Col,
- 
-} from "reactstrap";
-
-// core components
-import {
-  chartExample1,
-  chartExample2,
-  chartExample3,
-  chartExample4
-} from "variables/charts.jsx";
-
-// import CustomModal from './CustomModal/CustomModal'
-// import ActionNav from "./ActionNav/ActionNav";
-// import AddSection from "./AddSection/AddSection";
-// import TaskList from "./TaskList/TaskList";
-// import SingleTask from "../components/SingleTask/SingleTask";
 
 import {indexTaskList} from '../../actions/IndexAction/IndexAction'
 import {withRouter } from "react-router-dom";
@@ -84,7 +56,7 @@ class SevenDay extends React.Component {
     // localStorage.removeItem('token')
 
     console.log('localstorage',localStorage.getItem('token'))
-    const indexTaskListMessage = this.props.index_task.index_task_list.message
+    // const indexTaskListMessage = this.props.index_task.index_task_list.message
     
     return (
       <>

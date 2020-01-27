@@ -18,7 +18,7 @@ import {
   Col
 } from "reactstrap";
 import { connect } from 'react-redux'
-import {Link,Redirect,withRouter } from "react-router-dom";
+import {Redirect,withRouter } from "react-router-dom";
 import {login} from '../../actions/LoginAction/LoginAction'
 
 
@@ -45,12 +45,17 @@ class Login extends React.Component {
   }
   render() {
     const checkLocalStorage = localStorage.getItem('token')
+    
+
+    console.log('login local storage check',checkLocalStorage)
+    
       
     let { from } = this.props.location.state || { from: { pathname: "/custom/home" } };
     
     if (checkLocalStorage) return <Redirect to={from} />;
     return (
       <>
+        
         <div className="content">
           <Container>
             <Col className="ml-auto mr-auto" md={{size:8,offset:2}}>

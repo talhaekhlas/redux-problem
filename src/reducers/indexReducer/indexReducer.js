@@ -19,9 +19,7 @@ const indexReducer = (state = initialState, action) => {
             return Object.assign( {}, state, {
                 index_task_list: action.payload
             })
-
-        
-       
+        default:
        
     }
 

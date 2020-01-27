@@ -50,9 +50,9 @@ class Footer extends React.Component {
           <div className="copyright">
             © {new Date().getFullYear()} made with{" "}
             <i className="tim-icons icon-heart-2" /> by{" "}
-            <a href="javascript:void(0)" target="_blank">
+            {/* <a href="javascript:void(0)" target="_blank">
               Creative Tim
-            </a>{" "}
+            </a>{" "} */}
             for a better web.
           </div>
         </Container>

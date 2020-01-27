@@ -27,6 +27,8 @@ export const loginReducer = (state = initialState, action) => {
                 login_info: action.payload
             })
 
+        default:
+
         // case LOGIN_CHECK:
         //     return Object.assign( {}, state, {
         //         login_check: action.payload.login_check
