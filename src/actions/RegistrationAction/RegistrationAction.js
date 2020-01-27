@@ -28,9 +28,7 @@ export const registration = (formData,props) => (dispatch, getState) => {
     //  props.history.push('/login')
 
      localStorage.setItem('token','test test test')
-     props.history.push('/custom/home')
-
-     console.log('userRegistrationAction',props);
+    //  props.history.push('/custom/home')
 
    
   }

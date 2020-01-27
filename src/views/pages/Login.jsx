@@ -1,19 +1,4 @@
-/*!
 
-=========================================================
-* Black Dashboard PRO React - v1.0.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/black-dashboard-pro-react
-* Copyright 2019 Creative Tim (https://www.creative-tim.com)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
 import React from "react";
 
 // reactstrap components
@@ -32,6 +17,10 @@ import {
   Container,
   Col
 } from "reactstrap";
+import { connect } from 'react-redux'
+import {Link,Redirect,withRouter } from "react-router-dom";
+import {login} from '../../actions/LoginAction/LoginAction'
+
 
 class Login extends React.Component {
   componentDidMount() {
@@ -40,13 +29,32 @@ class Login extends React.Component {
   componentWillUnmount() {
     document.body.classList.toggle("login-page");
   }
+
+  loginPlease = (e)=>{
+    e.preventDefault()
+    
+    const {dispatch } = this.props; 
+    var email = document.querySelector('#email').value;
+    var password = document.querySelector('#password').value;
+    
+    const formData = {'email':email,'password':password}
+
+    dispatch(login(formData,this.props));
+    // localStorage.setItem('token',document.querySelector('#name').value)
+    // dispatch(indexTaskList());
+  }
   render() {
+    const checkLocalStorage = localStorage.getItem('token')
+      
+    let { from } = this.props.location.state || { from: { pathname: "/custom/home" } };
+    
+    if (checkLocalStorage) return <Redirect to={from} />;
     return (
       <>
         <div className="content">
           <Container>
-            <Col className="ml-auto mr-auto" lg="4" md="6">
-              <Form className="form">
+            <Col className="ml-auto mr-auto" md={{size:8,offset:2}}>
+              <Form className="form" onSubmit = {this.loginPlease}>
                 <Card className="card-login card-white">
                   <CardHeader>
                     <img
@@ -62,7 +70,7 @@ class Login extends React.Component {
                           <i className="tim-icons icon-email-85" />
                         </InputGroupText>
                       </InputGroupAddon>
-                      <Input placeholder="Email" type="text" />
+                      <Input placeholder="Email" type="text" id="email" />
                     </InputGroup>
                     <InputGroup>
                       <InputGroupAddon addonType="prepend">
@@ -70,19 +78,20 @@ class Login extends React.Component {
                           <i className="tim-icons icon-lock-circle" />
                         </InputGroupText>
                       </InputGroupAddon>
-                      <Input placeholder="Password" type="text" />
+                      <Input placeholder="Password" type="password" id="password" />
                     </InputGroup>
                   </CardBody>
                   <CardFooter>
                     <Button
                       block
                       className="mb-3"
+                      type = "submit"
                       color="primary"
-                      href="#pablo"
-                      onClick={e => e.preventDefault()}
+                      // href="#pablo"
+                      // onClick={e => e.preventDefault()}
                       size="lg"
                     >
-                      Get Started
+                      Login
                     </Button>
                     <div className="pull-left">
                       <h6>
@@ -117,4 +126,11 @@ class Login extends React.Component {
   }
 }
 
-export default Login;
+
+
+const mapStateToProps = state => ({
+  login:state.loginReducer,
+  
+})
+
+export default withRouter(connect(mapStateToProps)(Login))

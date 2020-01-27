@@ -1,6 +1,7 @@
 
 export const PROJECT_LIST = 'PROJECT_LIST'
 
+export const PROJECT_MODAL_SHOW = 'PROJECT_MODAL_SHOW'
 
 
 export const projectList = () => async(dispatch, getState) => {
@@ -26,3 +27,20 @@ export const projectList = () => async(dispatch, getState) => {
     
    
   }
+
+
+  export const projectModalShow = () => async(dispatch, getState) => {
+
+   
+    const data = {
+        project_modal_show:true
+    };
+    dispatch({
+    
+      type: PROJECT_MODAL_SHOW,
+      payload: data,
+      
+    })
+  
+ 
+}

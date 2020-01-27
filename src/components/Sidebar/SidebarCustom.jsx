@@ -1,20 +1,4 @@
-/*!
 
-=========================================================
-* Black Dashboard PRO React - v1.0.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/black-dashboard-pro-react
-* Copyright 2019 Creative Tim (https://www.creative-tim.com)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
-/*eslint-disable*/
 import React from "react";
 import { NavLink,Link,Redirect,withRouter } from "react-router-dom";
 import { connect } from 'react-redux'
@@ -26,6 +10,8 @@ import ProjectModal from '../Project/ProjectModal/ProjectModal'
 
 // reactstrap components
 import { Nav, Collapse } from "reactstrap";
+import { projectModalShow } from "../../actions/ProjectAction/ProjectAction";
+
 
 var ps;
 
@@ -61,6 +47,9 @@ class SidebarCustom extends React.Component {
       projectModalStatus:true,
       projectModalOpenStatus:true
     })
+
+    const {dispatch } = this.props; 
+    dispatch(projectModalShow());
     
   }
 
