@@ -36,6 +36,22 @@ class AdminLayoutCustom extends React.Component {
       }
     }
     window.addEventListener("scroll", this.showNavbarButton);
+
+
+    var customRoute = routes
+
+    customRoute[3]['views'] = [{
+      path: "/project",
+      id:1,
+      name: "Project",
+      rtlName: "لوحة القيادة",
+      mini: "P",
+      // icon: "tim-icons icon-book-bookmark",
+      // component: Project,
+      layout: "/custom"
+    }]
+
+
   }
   componentWillUnmount() {
     if (navigator.platform.indexOf("Win") > -1) {
@@ -78,19 +94,24 @@ class AdminLayoutCustom extends React.Component {
       if (prop.collapse) {
         return this.getRoutes(prop.views);
       }
+
+      let customComponent
+      if(prop.name === 'Project'){
+        customComponent = <PrivateRoute
+        path={prop.layout + prop.path + '/:id'}
+        component={Project}
+        key={key}
+        />
+      }else{
+        customComponent = <PrivateRoute
+        path={prop.layout + prop.path}
+        component={prop.component}
+        key={key}
+      />
+      }
+
       if (prop.layout === "/custom") {
-        return (
-          // <Route
-          //   path={prop.layout + prop.path}
-          //   component={prop.component}
-          //   key={key}
-          // />
-          <PrivateRoute
-            path={prop.layout + prop.path}
-            component={prop.component}
-            key={key}
-          />
-        );
+        return customComponent
       } else {
         return null;
       }
@@ -156,16 +177,7 @@ class AdminLayoutCustom extends React.Component {
 
 
 
-    var customRoute = routes
-
-    customRoute[3] = {
-      path: "/project",
-      name: "Hamba",
-      rtlName: "لوحة القيادة",
-      icon: "tim-icons icon-book-bookmark",
-      component: Project,
-      layout: "/custom"
-    }
+    
 
     
     

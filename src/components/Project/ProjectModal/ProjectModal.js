@@ -43,12 +43,16 @@ class ProjectModal extends Component {
 
            {/* <Button color="secondary" onClick={this.props.projectModalClose}>Cancel</Button> */}
                 {/* <Button color="danger" onClick={toggle}>{buttonLabel}</Button> */}
+                
                 <Modal 
                 isOpen={this.props.projectModalOpenStatus}
                 toggle={this.props.projectModalClose}>
+                  <Form  onSubmit = {this.props.saveProject}>
+                  
                 <ModalHeader onClick={this.props.projectModalClose} close={this.closeBtn}>Add Project</ModalHeader>
+                
                 <ModalBody>
-                <Form action="#">
+                
                     <label>Project Name</label>
                     <FormGroup>
                       <Input type="text" id="project_name" />
@@ -94,13 +98,15 @@ class ProjectModal extends Component {
                     <Switch onChange={(el, state) => this.handleSwitch(el, state)} name='test' />
                     {" "} <span>Add to Favorites</span>
 
-                   </Form>
+                   
                 </ModalBody>
                 <ModalFooter>
-                    <Button color="primary" size="sm" onClick={this.props.saveProject}>Add</Button>{' '}
+                    <Button color="primary" size="sm" type="submit">Add</Button>{' '}
                     <Button color="danger" size="sm" onClick={this.props.projectModalClose}>Cancel</Button>
                 </ModalFooter>
+                </Form>
                 </Modal>
+                
             </div>
         );
     }

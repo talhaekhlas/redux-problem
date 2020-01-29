@@ -1,4 +1,5 @@
 import { PROJECT_LIST } from '../../actions/ProjectAction/ProjectAction'
+import { SAVE_PROJECT } from '../../actions/ProjectAction/ProjectAction'
 import { PROJECT_MODAL_SHOW } from '../../actions/ProjectAction/ProjectAction'
 
 
@@ -18,6 +19,11 @@ const projectReducer = (state = initialState, action) => {
     switch (action.type) {
 
         case PROJECT_LIST:
+            return Object.assign( {}, state, {
+                project_list: action.payload
+            })
+            
+        case SAVE_PROJECT:
             return Object.assign( {}, state, {
                 project_list: action.payload
             }) 

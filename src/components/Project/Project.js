@@ -1,13 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
+import {useParams} from "react-router-dom";
 
-class Project extends Component {
-    render() {
-        return (
-            <div className="content">
-                <h1>I am project</h1>
-            </div>
-        );
-    }
-}
+const Project = () => {
+    let {id} = useParams();
+    
+    return (
+        <div className="content">
+            <h1>I am project {id}</h1>
+        </div>
+    );
+};
 
 export default Project;

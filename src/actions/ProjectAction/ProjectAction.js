@@ -1,32 +1,74 @@
-
+import axios from 'axios'
 export const PROJECT_LIST = 'PROJECT_LIST'
-
 export const PROJECT_MODAL_SHOW = 'PROJECT_MODAL_SHOW'
+export const SAVE_PROJECT = 'SAVE_PROJECT'
 
 
 export const projectList = () => async(dispatch, getState) => {
 
    
-      const data = {
-          message:'project after dispatch',
-          data:[
-              {'name':'List One','id':1,'project_id':1},
-              {'name':'List Two','id':2,'project_id':1},
-              {'name':'List Three','id':3,'project_id':1},
-              {'name':'List Four','id':4,'project_id':1},
-              {'name':'List Five','id':5,'project_id':1},
-              {'name':'List Six','id':6,'project_id':1},
-            ]
+  const config = {
+    headers: {'Authorization': "Bearer " + localStorage.getItem('token')}
+    };
+
+   const bodyParameters = {
+    'Content-Type': "application/json",
+    'Accept': "application/json",
+   }
+
+  axios.get('http://localhost:8000/api/projects',config,bodyParameters).then(response => response.data)
+  .then((data) => {
+
+  
+      
+    dispatch({
+    
+      type: PROJECT_LIST,
+      payload: {
+        project_list: data,
+      }
+    })
+    
+   })
+
+
+  }
+
+
+
+  export const saveProject = (formData,props) => (dispatch, getState) => {
+
+    
+    // console.log('project form data',formData)
+
+    const config = {
+      headers: {'Authorization': "Bearer " + localStorage.getItem('token')}
       };
+  
+     const bodyParameters = {
+      'Content-Type': "application/json",
+      'Accept': "application/json",
+     }
+
+    axios.post('http://localhost:8000/api/projects',formData,config,bodyParameters).then(response => response.data)
+    .then((data) => {
+
+    
+        
       dispatch({
       
-        type: PROJECT_LIST,
-        payload: data,
-        
+        type: SAVE_PROJECT,
+        payload: {
+          project_list: data,
+        }
       })
-    
+      
+     })
    
   }
+
+
+
 
 
   export const projectModalShow = () => async(dispatch, getState) => {

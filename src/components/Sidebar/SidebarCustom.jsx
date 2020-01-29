@@ -8,7 +8,9 @@ import PerfectScrollbar from "perfect-scrollbar";
 import ProjectModal from '../Project/ProjectModal/ProjectModal'
 import { Nav, Collapse } from "reactstrap";
 import { projectModalShow } from "../../actions/ProjectAction/ProjectAction";
-import Project from "../Project/Project";
+import { saveProject } from "../../actions/ProjectAction/ProjectAction";
+import { projectList } from "../../actions/ProjectAction/ProjectAction";
+// import Project from "../Project/Project";
 
 
 var ps;
@@ -37,6 +39,8 @@ class SidebarCustom extends React.Component {
     });
     return initialState;
   };
+
+  
 
 
   addProjectFrom = ()=>{
@@ -67,11 +71,31 @@ class SidebarCustom extends React.Component {
     console.log('project name',document.querySelector('#project_name').value)
     console.log('project color',document.querySelector('#project_color').children[1].value)
     console.log('favorite color',document.querySelector('#project_description').value)
+
+      const {dispatch } = this.props; 
+
+      var name = document.querySelector('#project_name').value;
+      var description = document.querySelector('#project_description').value;
+      var color = document.querySelector('#project_color').children[1].value;
+      
+
+      const formData = {
+        'name':name,
+        'description':description,
+        'color':color,
+        'user_id':6,
+        'parent_id':0
+      }
+
+      dispatch(saveProject(formData,this.props));
+
+
     this.setState({
       ...this.state,
       projectModalStatus:false,
       projectModalOpenStatus:false
     })
+
   }
 
 
@@ -92,6 +116,8 @@ class SidebarCustom extends React.Component {
   createLinks = routes => {
     const { rtlActive } = this.props;
     return routes.map((prop, key) => {
+
+      var routeParameter = prop.id!==undefined?'/'+prop.id:''
       if (prop.redirect) {
         return null;
       }
@@ -165,8 +191,10 @@ class SidebarCustom extends React.Component {
         );
       }
       return (
+
+        
         <li className={this.activeRoute(prop.layout + prop.path)} key={key}>
-          <NavLink to={prop.layout + prop.path} activeClassName="" onClick={this.props.closeSidebar}>
+          <NavLink to={prop.layout + prop.path + routeParameter} activeClassName="" onClick={this.props.closeSidebar}>
           {prop.icon !== undefined ? (
               <>
                 <i className={prop.icon} />
@@ -181,7 +209,7 @@ class SidebarCustom extends React.Component {
                   {rtlActive ? prop.rtlMini : prop.mini}
                 </span>
                 <span className="sidebar-normal">
-                  {rtlActive ? prop.rtlName : prop.name} Talha
+                  {rtlActive ? prop.rtlName : prop.name}
                 </span>
               </>
             )}
@@ -199,6 +227,9 @@ class SidebarCustom extends React.Component {
     if (navigator.platform.indexOf("Win") > -1) {
       ps = new PerfectScrollbar(this.refs.sidebar);
     }
+
+    const {dispatch } = this.props; 
+    dispatch(projectList());
   }
   componentWillUnmount() {
     // we need to destroy the false scrollbar when we navigate
@@ -265,18 +296,19 @@ class SidebarCustom extends React.Component {
       }
     }
 
-    var customRoute = this.props.routes
+    // var customRoute = this.props.routes
 
-    customRoute[3] = {
-      path: "/project",
-      name: "Hamba",
-      rtlName: "لوحة القيادة",
-      icon: "tim-icons icon-book-bookmark",
-      component: Project,
-      layout: "/custom"
-    }
+    // customRoute[3] = {
+    //   path: "/project",
+    //   name: "Project",
+    //   rtlName: "لوحة القيادة",
+    //   icon: "tim-icons icon-book-bookmark",
+    //   // component: Project,
+    //   layout: "/custom"
+    // }
 
-
+    const project = this.props.project
+    console.log(project.project_list)
     return (
       <div className="sidebar" data={activeColor}>
         <div className="sidebar-wrapper" ref="sidebar">
